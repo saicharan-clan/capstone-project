@@ -6,7 +6,7 @@ resource "azurerm_linux_virtual_machine" "app-machine" {
   resource_group_name   = azurerm_resource_group.capstone-project.name
   size               = "Standard_B4ms"
   admin_username = "azureuser"
-  network_interface_ids = [azurerm_network_interface.network-interface.id]
+  network_interface_ids = [azurerm_network_interface.app-machine-nic.id]
 
   os_disk {
     caching              = "ReadWrite"
@@ -38,7 +38,7 @@ resource "azurerm_linux_virtual_machine" "tools-machine" {
   resource_group_name   = azurerm_resource_group.capstone-project.name
   size               = "Standard_B4ms"
   admin_username        = "azureuser"
-  network_interface_ids = [azurerm_network_interface.network-interface.id]
+  network_interface_ids = [azurerm_network_interface.tools-machine-nic.id]
 
   os_disk {
     caching              = "ReadWrite"
