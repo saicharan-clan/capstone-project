@@ -8,6 +8,7 @@ resource "azurerm_network_interface" "app-machine-nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.public-subnet.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.nat-pub-ip.id 
   }
 }
 
@@ -21,5 +22,6 @@ resource "azurerm_network_interface" "tools-machine-nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.public-subnet.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.nat-pub-ip.id 
   }
 }
