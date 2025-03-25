@@ -15,9 +15,9 @@ resource "azurerm_linux_virtual_machine" "app-machine" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "19_04-gen2" 
-    version   = "19.04.202001220" 
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts-gen2"
+    version   = "latest"
   }
 
   admin_ssh_key {
@@ -47,9 +47,9 @@ resource "azurerm_linux_virtual_machine" "tools-machine" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "19_04-gen2" 
-    version   = "19.04.202001220" 
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts-gen2"
+    version   = "latest"
   }
 
   admin_ssh_key {
