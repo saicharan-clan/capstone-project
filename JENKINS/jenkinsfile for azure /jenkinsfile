@@ -11,7 +11,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/saicharan-clan/capstone-project.git'
             }
         }
-        stage('Deploy AWS HTML') {
+        stage('Deploy AZURE HTML') {
             steps {
                 sh 'sudo -u azureuser ansible-playbook -i /home/azureuser/inventory.ini /home/azureuser/playbook.yaml'
             }
