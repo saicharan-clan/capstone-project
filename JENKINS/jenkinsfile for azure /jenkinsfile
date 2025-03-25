@@ -1,4 +1,4 @@
-pipeline {
+    pipeline {
     agent any
     environment {
         DEST_PATH = "/var/www/html"
@@ -13,9 +13,9 @@ pipeline {
         }
         stage('Deploy AZURE HTML') {
             steps {
-               sh """
-                        ssh -o StrictHostKeyChecking=no azureuser@tools-machine 'ansible-playbook -i $INVENTORY_FILE $PLAYBOOK_FILE'
-                    """
+                sh 'sudo -u azureuser /usr/bin/ansible-playbook -i /home/azureuser/inventory.ini /home/azureuser/playbook.yaml --become --become-user=root'
+
+
             }
         }
     }
