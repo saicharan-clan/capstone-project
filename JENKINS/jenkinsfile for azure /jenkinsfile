@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Deploy AZURE HTML') {
             steps {
-               sh 'ansible-playbook -i ${INVENTORY_FILE} ${PLAYBOOK_FILE}'
+               sh """
+                        ssh -o StrictHostKeyChecking=no azureuser@tools-machine 'ansible-playbook -i $INVENTORY_FILE $PLAYBOOK_FILE'
+                    """
             }
         }
     }
