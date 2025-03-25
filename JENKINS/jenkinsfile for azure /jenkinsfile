@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    environment {
+        DEST_PATH = "/var/www/html"
+        INVENTORY_FILE = "/home/azureuser/inventory.ini"
+        PLAYBOOK_FILE ="/home/azureuser/playbook.yaml"
+    }
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/saicharan-clan/capstone-project.git'
+            }
+        }
+        stage('Deploy AWS HTML') {
+            steps {
+                sh 'sudo -u ubuntu ansible-playbook -i /home/azureuser/inventory.ini /home/azureuser/playbook.yaml'
+            }
+        }
+    }
+}
