@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy AWS HTML') {
             steps {
-                sh 'sudo -u ubuntu ansible-playbook -i /home/azureuser/inventory.ini /home/azureuser/playbook.yaml'
+                sh 'sudo -u azureuser ansible-playbook -i /home/azureuser/inventory.ini /home/azureuser/playbook.yaml'
             }
         }
     }
