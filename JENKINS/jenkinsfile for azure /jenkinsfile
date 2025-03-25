@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy AZURE HTML') {
             steps {
-                sh 'sudo -u azureuser ansible-playbook -i /home/azureuser/inventory.ini /home/azureuser/playbook.yaml'
+               sh 'ansible-playbook -i ${INVENTORY_FILE} ${PLAYBOOK_FILE}'
             }
         }
     }
