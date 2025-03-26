@@ -1,1 +1,35 @@
+---
+- name: Install and configure Nginx
+  hosts: all
+  become: yes  # Use sudo for elevated privileges
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
 
+    - name: Install Nginx web server
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Verify Nginx service status
+      ansible.builtin.command: systemctl is-active nginx
+      register: nginx_status
+      changed_when: false
+
+    - name: Display Nginx status output
+      ansible.builtin.debug:
+        msg: "Nginx is {{ nginx_status.stdout }}"
+
+
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+        enabled: yes
