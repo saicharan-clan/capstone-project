@@ -1,1 +1,18 @@
+---
+- name: Copy index.html and restart Nginx
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy custom index.html for AWS
+      ansible.builtin.copy:
+        src: index-aws.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
 
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+        enabled: yes
