@@ -22,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "app-machine" {
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("/home/sreemusiri/.ssh/id_rsa.pub")
+    public_key = file("/home/azureuser/.ssh/id_rsa.pub")
   }
 
 tags = {
@@ -54,7 +54,7 @@ resource "azurerm_linux_virtual_machine" "tools-machine" {
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("/home/sreemusiri/.ssh/id_rsa.pub")
+    public_key = file("/home/azureuser/.ssh/id_rsa.pub")
   }
 tags = {
     environment = "staging"
