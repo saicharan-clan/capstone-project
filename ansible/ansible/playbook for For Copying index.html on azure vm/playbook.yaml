@@ -5,7 +5,7 @@
   tasks:
     - name: Copy custom index.html for AWS
       ansible.builtin.copy:
-        src: index-aws.html
+        src: index-azure.html
         dest: /var/www/html/index.html
         owner: www-data
         group: www-data
